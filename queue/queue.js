@@ -7,17 +7,34 @@ function makeParticipant(text)
 
 function makeQueue(text)
 {
-  return '<li class="participant"><button class="deleteParticipant" value="'+text+'">X</button> <span class="participantName">'+text+'</span> <button class="dequeueParticipant">v</button></li>';
+  return '<li class="participant"><button class="deleteItem" value="'+text+'">X</button> <span class="participantName">'+text+'</span> <button class="dequeueParticipant">v</button></li>';
 }
 
 function makeHistory(text)
 {
-  return '<li class="participant"><button class="deleteParticipant" value="'+text+'">X</button> <span class="participantName">'+text+'</span></li>';
+  return '<li class="participant"><button class="deleteItem" value="'+text+'">X</button> <span class="participantName">'+text+'</span></li>';
+}
+
+function deleteItem()
+{
+  $(this).parent().remove();
 }
 
 function deleteParticipant()
 {
-  $(this).parent().remove();
+  log(participants);
+  var text=$(this).next().text();
+  log(text);
+  var index=jQuery.inArray(text, participants);
+  log(index);
+  if(index!=-1)
+  {
+    participants.splice(index, 1);
+  }
+  log(participants);
+
+  deleteItem();
+  addParticipants();
 }
 
 function queueParticipant(button)
@@ -41,6 +58,9 @@ function activateButtons()
 {
   $('.deleteParticipant').unbind('click');
   $('.deleteParticipant').click(deleteParticipant);
+  
+  $('.deleteItem').unbind('click');
+  $('.deleteItem').click(deleteItem);
 
   $('.queueParticipant').unbind('click');
   $('.queueParticipant').click(queueParticipant);
@@ -74,6 +94,7 @@ function addParticipant()
 {
   var text=$('#addParticipantField').val();
   participants.push(text);
+  log(participants);
   addParticipants();
   $('#addParticipantField').val('');
 
