@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="test/css" href="style.css"/>
+    <link rel="stylesheet" type="test/css" href="queue.css"/>
+  </head>
+  <body>
+    <h1>Speaker Queue</h1>
+
+    <div id="queueHistoryBox">
+      <div id="queueBox">
+        <h2>Queue</h2>
+        <ul id="queue">
+        </ul>
+      </div>
+
+      <div id="historyBox">
+        <h2>History</h2>
+        <ul id="history">
+        </ul>
+      </div>
+    </div>
+
+    <div id="participantBox">
+      <h2>Participants</h2>
+      <input id="addParticipantField" type="text" value=""/>
+      <button id="addParticipantButton">Add</button>
+      <ul id="participants">
+      </ul>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="debug.js"></script>
+    <script src="queue.js"></script>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+body
+{
+  margin-left: 33%;
+  margin-right: 33%;
+}
+
+#queueHistoryBox
+{
+  float: right;
+}
+
+#participantBox
+{
+  float: left;
+}
