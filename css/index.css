@@ -1,0 +1,15 @@
+.box
+{
+  height: 200px;
+  width: 200px;
+  border: solid black 1px;
+  background-color: lightblue;
+  text-color: black;
+  margin: 10px;
+  text-align: center;
+}
+
+.textBox
+{
+  margin: auto;
+}
