@@ -17,9 +17,20 @@ body
 .nonquorum
 {
   color: gray;
+  font-style: italic;
 }
 
 .quorum
 {
   color: black;
+}
+
+.checkYes
+{
+  color: green;
+}
+
+.checkNo
+{
+  color: red;
 }

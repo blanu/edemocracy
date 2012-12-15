@@ -179,7 +179,15 @@ function memberClick()
         $('#quorumStat').empty().append(quorumStat);
         $('#majorityStat').empty().append(majorityStat);
         $('#attendeesStat').empty().append(attendeesStat);
-        $('#checkStat').empty().append(''+checkStat);
+        
+        if(checkStat)
+        {
+            $('#checkStat').empty().append('<span class="checkYes">Yes</span>');
+        }
+        else
+        {
+            $('#checkStat').empty().append('<span class="checkNo">No</span>');            
+        }
     }
 }
 
@@ -210,7 +218,6 @@ function init()
   $('#majorityStat').empty().append(majorityStat);
   $('#attendeesStat').empty().append(attendeesStat);
   $('#membersStat').empty().append(membersStat);
-  $('#checkStat').empty().append(''+checkStat);
   $(':checkbox').click(memberClick);
 }
 
