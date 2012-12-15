@@ -13,3 +13,13 @@ body
 {
   float: left;
 }
+
+.nonquorum
+{
+  color: gray;
+}
+
+.quorum
+{
+  color: black;
+}

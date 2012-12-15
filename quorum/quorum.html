@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="test/css" href="../style/style.css"/>
+        <link rel="stylesheet" type="test/css" href="quorum.css"/>
+    </head>
+    <body>
+        <h1>Quorum Checker</h1>
+        
+        <div id="statBox">
+            <ul id="stats">
+                <li class="stat">
+                    <span class="statName">Members</span> <span id="membersStat" class="statValue"></span>
+                </li>
+                <li class="stat">
+                    <span class="statName">Quorum</span> <span id="quorumStat" class="statValue"></span>
+                </li>
+                <li class="stat">
+                    <span class="statName">Majority</span> <span id="majorityStat" class="statValue"></span>
+                </li>
+                <li class="stat">
+                    <span class="statName">Attendees</span> <span id="attendeesStat" class="statValue"></span>
+                </li>
+                <li class="stat">
+                    <span class="statName">Check</span> <span id="checkStat" class="statValue"></span>
+                </li>
+            </ul>
+        </div>
+                
+        <div id="memberBox">
+            <h2>Participants</h2>
+            <ul id="members">
+            </ul>
+        </div>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script src="../js/debug.js"></script>
+        <script src="quorum.js"></script>
+    </body>
+</html>
