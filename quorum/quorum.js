@@ -21,57 +21,8 @@ var quorumStat=0;
 var majorityStat=0;
 var checkStat=false;
 
-<<<<<<< HEAD
-var absentee=[];
-
-var members=[
-    'Encenito Acedillo',
-    'Martin Bogomolni',
-    'Eric Blount',
-    'Angie Bonser',
-    'Paul Bonser',
-    'Derek Bridges',
-    'Marina Braverman@',
-    'Brent Burton',
-    'Aaron Choate',
-    'Richard Clark@',
-    'Tom Davidson@',
-    'Mert Eastman',
-    'Michelle Elbert',
-    'Cara Fealy-Choate',
-    'Chad Franke',
-    'Tim Fredlund@',
-    'Vladimir Garner',
-    'Andy Howell@',
-    'Andrew Harris@',
-    'Jonathan Kelly',
-    'Mandie Kramer',
-    'Matthew Ludlum',
-    'Matt Mancuso',
-    'Matt McCabe',
-    'Roland McIntosh',
-    'Chris McLaughlin',
-    'David Mitchell',
-    'Evelyn Nelson',
-    'Karl Pauls@',
-    'Marshall Peck',
-    'Mike Rich',
-    'Jessica Ross',
-    'Joe Saunders$$',
-    'Scott Saunders',
-    'Michael Smith',
-    'Patricia Swarin',
-    'Douglas Swarin',
-    'Bill Tyler@',
-    'Elom Tsogbe@$$',
-    'Marshall Vaughan',
-    'John Wiggins',
-    'Pat Wheaton@',
-    'Gardner Williams',
-];
-=======
 var members=[];
->>>>>>> 065906245198e932dd3510a91ef4ee3264df0d89
+var absentee=[];
 
 function makeParticipant(text)
 {
@@ -215,7 +166,6 @@ function memberClick()
     }
 }
 
-<<<<<<< HEAD
 function memberOn()
 {
     revealAbsenteeCheckbox(this);
@@ -257,7 +207,6 @@ function memberOff()
 
 function absenteeClick()
 {
-    console.log('absentee click');
     var memberName=$(this).parent().parent().justtext();
     if($(this).is(':checked'))
     {
@@ -271,10 +220,8 @@ function absenteeClick()
             remove(absentee, index);
         }
     }
+}    
     
-    console.log('absentee:');
-    console.log(absentee);
-=======
 function getMembers()
 {
   $(this).contents().find('#mw-content-text ul').first().find('li').each(gotMember);
@@ -285,13 +232,6 @@ function gotMember()
 {
   var name=$(this).text().replace("\n", '');
   members.push(name);
-}
-
-function gotMembers(data)
-{
-  console.log('gotMembers:');
-  console.log(data);
->>>>>>> 065906245198e932dd3510a91ef4ee3264df0d89
 }
 
 function init()
