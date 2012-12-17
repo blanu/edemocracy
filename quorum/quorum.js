@@ -21,6 +21,7 @@ var quorumStat=0;
 var majorityStat=0;
 var checkStat=false;
 
+<<<<<<< HEAD
 var absentee=[];
 
 var members=[
@@ -68,6 +69,9 @@ var members=[
     'Pat Wheaton@',
     'Gardner Williams',
 ];
+=======
+var members=[];
+>>>>>>> 065906245198e932dd3510a91ef4ee3264df0d89
 
 function makeParticipant(text)
 {
@@ -211,6 +215,7 @@ function memberClick()
     }
 }
 
+<<<<<<< HEAD
 function memberOn()
 {
     revealAbsenteeCheckbox(this);
@@ -269,9 +274,35 @@ function absenteeClick()
     
     console.log('absentee:');
     console.log(absentee);
+=======
+function getMembers()
+{
+  $(this).contents().find('#mw-content-text ul').first().find('li').each(gotMember);
+  initDisplay();
+}
+
+function gotMember()
+{
+  var name=$(this).text().replace("\n", '');
+  members.push(name);
+}
+
+function gotMembers(data)
+{
+  console.log('gotMembers:');
+  console.log(data);
+>>>>>>> 065906245198e932dd3510a91ef4ee3264df0d89
 }
 
 function init()
+{
+//  $.get('/memberList/', gotMembers);
+
+  var iframe=$('#memberList iframe');
+  iframe.load(getMembers);
+}
+
+function initDisplay()
 {
   members.sort();
   for(var memberNum in members)
