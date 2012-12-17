@@ -34,3 +34,13 @@ body
 {
   color: red;
 }
+
+.absentee
+{
+  margin-left: 10px;
+}
+
+.absenteeText
+{
+    color: blue;
+}

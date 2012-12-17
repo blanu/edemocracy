@@ -1,8 +1,27 @@
+function remove(arr, from, to)
+{
+  var rest = arr.slice((to || from) + 1 || arr.length);
+  arr.length = from < 0 ? arr.length + from : from;
+  return arr.push.apply(arr, rest);
+}
+
+jQuery.fn.justtext = function() {
+   
+    return $(this)  .clone()
+            .children()
+            .remove()
+            .end()
+            .text();
+ 
+};
+
 var attendeesStat=0;
 var membersStat=0;
 var quorumStat=0;
 var majorityStat=0;
 var checkStat=false;
+
+var absentee=[];
 
 var members=[
     'Encenito Acedillo',
@@ -160,6 +179,7 @@ function memberClick()
         if($(this).is(':checked'))
         {
             attendeesStat=attendeesStat+1;
+            revealAbsenteeCheckbox($(this).parent());
         }
         else
         {
@@ -191,6 +211,66 @@ function memberClick()
     }
 }
 
+function memberOn()
+{
+    revealAbsenteeCheckbox(this);
+}
+
+function revealAbsenteeCheckbox(li)
+{
+    if($(li).find('.memberCheckbox').is(':checked'))
+    {
+        var memberName=$(li).text();
+        console.log('absentee:');
+        console.log(absentee);
+        if($.inArray(memberName, absentee)!=-1)
+        {
+            $(li).find('.absentee').empty().append('Absentee vote? <input class="absenteeCheckbox" type="checkbox" checked="yes"/>');        
+        }
+        else
+        {
+            $(li).find('.absentee').empty().append('Absentee vote? <input class="absenteeCheckbox" type="checkbox"/>');
+        }
+        
+        $('.absenteeCheckbox').click(absenteeClick);
+    }
+}
+
+function memberOff()
+{
+    var memberName=$(this).justtext();
+    console.log('off: '+memberName);
+    if($.inArray(memberName, absentee)!=-1)
+    {
+        $(this).find('.absentee').empty().append('<span class="absenteeText">Absentee</span>');
+    }
+    else
+    {
+        $(this).find('.absentee').empty();        
+    }
+}
+
+function absenteeClick()
+{
+    console.log('absentee click');
+    var memberName=$(this).parent().parent().justtext();
+    if($(this).is(':checked'))
+    {
+        absentee.push(memberName);
+    }
+    else
+    {
+        var index=$.inArray(memberName, absentee);
+        if(index!=-1)
+        {
+            remove(absentee, index);
+        }
+    }
+    
+    console.log('absentee:');
+    console.log(absentee);
+}
+
 function init()
 {
   members.sort();
@@ -199,15 +279,15 @@ function init()
       var member=members[memberNum];
       if(member.substring(member.length-1, member.length)=='@')
       {
-          $('#members').append('<li class="nonquorum"><input class="nonquorumCheckbox" type="checkbox"/>'+member+'</li>');
+          $('#members').append('<li class="nonquorum"><input class="nonquorumCheckbox" type="checkbox"/>'+member+'<span class="absentee"/></li>');
       }
       else if(member.substring(member.length-1, member.length)=='$')
       {
-          $('#members').append('<li class="nonquorum"><input class="nonquorumCheckbox" type="checkbox"/>'+member+'</li>');          
+          $('#members').append('<li class="nonquorum"><input class="nonquorumCheckbox" type="checkbox"/>'+member+'<span class="absentee"/></li>');          
       }
       else
       {
-          $('#members').append('<li class="member"><input class="memberCheckbox" type="checkbox"/>'+member+'</li>');          
+          $('#members').append('<li class="member"><input class="memberCheckbox" type="checkbox"/>'+member+'<span class="absentee"/></li>');          
           membersStat=membersStat+1;
           quorumStat=Math.round(membersStat/3);          
           majorityStat=Math.round((membersStat/2)+1);
@@ -218,7 +298,8 @@ function init()
   $('#majorityStat').empty().append(majorityStat);
   $('#attendeesStat').empty().append(attendeesStat);
   $('#membersStat').empty().append(membersStat);
-  $(':checkbox').click(memberClick);
+  $('.memberCheckbox').click(memberClick);
+  $('li').hover(memberOn, memberOff);
 }
 
 $(document).ready(init);
