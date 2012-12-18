@@ -175,7 +175,7 @@ function revealAbsenteeCheckbox(li)
 {
     if($(li).find('.memberCheckbox').is(':checked'))
     {
-        var memberName=$(li).text();
+        var memberName=$(li).justtext();
         console.log('absentee:');
         console.log(absentee);
         if($.inArray(memberName, absentee)!=-1)
@@ -195,7 +195,7 @@ function memberOff()
 {
     var memberName=$(this).justtext();
     console.log('off: '+memberName);
-    if($.inArray(memberName, absentee)!=-1)
+    if($.inArray(memberName, absentee)!=-1 && $(this).find('.memberCheckbox').is(':checked'))
     {
         $(this).find('.absentee').empty().append('<span class="absenteeText">Absentee</span>');
     }
