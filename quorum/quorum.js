@@ -260,7 +260,7 @@ function initDisplay()
       {
           $('#members').append('<li class="member"><input class="memberCheckbox" type="checkbox"/>'+member+'<span class="absentee"/></li>');          
           membersStat=membersStat+1;
-          quorumStat=Math.round(membersStat/3);          
+          quorumStat=Math.ceil(membersStat*.3);
           majorityStat=Math.round((membersStat/2)+1);
       }
   }
